@@ -1,0 +1,42 @@
+
+
+Name:         @{package_name}
+Version:      @{package_version}
+Release:      @{package_revision}
+Url:          http://developers.mosaic-cloud.eu/
+License:      Apache 2.0
+Summary:      mOSAIC platform controller
+
+Source:       @{package_name}--@{package_version}-@{package_revision}--rootfs.cpio
+Requires:     mosaic-rt-erlang-r15b
+Requires:     mosaic-rt-nodejs-v0.10
+Requires:     glibc-32bit
+Requires:     iptables
+AutoReqProv:  no
+BuildArch:    noarch
+
+%description
+	mOSAIC platform controller
+
+
+%build
+	set -e -E -u -o pipefail -o noclobber -o noglob +o braceexpand || exit 1
+	trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
+	cd -- "${RPM_BUILD_ROOT}"
+	cpio -i \
+			--make-directories \
+			--no-preserve-owner \
+			--quiet \
+		<"${RPM_SOURCE_DIR}/@{package_name}--@{package_version}-@{package_revision}--rootfs.cpio"
+	chmod -R +w -- .
+
+
+%files
+	%defattr(-,root,root,-)
+	/opt/mosaic-platform-controller/bin/
+	/opt/mosaic-platform-controller/lib/
+	/opt/mosaic-platform-controller-wui/bin/
+	/opt/mosaic-platform-controller-wui/lib/
+	/opt/mosaic-platform-controller-boot/bin/
+	/opt/mosaic-platform-components-me2cp/bin/
+	/opt/mosaic-platform-components-me2cp/lib/
