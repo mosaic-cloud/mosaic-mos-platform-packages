@@ -60,8 +60,8 @@ _rpmbuild_rpms="${HOME}/rpmbuild/RPMS"
 _rpmbuild_arch=noarch
 
 _curl_arguments=(
+		# --progress-bar
 		--silent
-		#--progress-bar
 )
 _curl_env=(
 		"${_generic_env[@]}"
@@ -70,9 +70,9 @@ _curl_env=(
 
 _distribution_version="${mosaic_distribution_version:-0.7.0}"
 _package_name="$( basename -- "$( readlink -e -- . )" )"
+_package_version="${mosaic_package_version:-${_distribution_version}}"
 _package_timestamp="$( date -u '+%s' )"
 _package_revision="${mosaic_package_revision:-${_package_timestamp}}"
-_package_version="${mosaic_package_version:-${_distribution_version}}"
 _package_architecture="${_rpmbuild_arch}"
 
 

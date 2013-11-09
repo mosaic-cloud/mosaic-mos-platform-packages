@@ -5,6 +5,7 @@ if ! test "${#}" -le 1 ; then
 	exit 1
 fi
 
+
 while read _package ; do
 	
 	echo "[ii] preparing \`${_package}\`..." >&2
@@ -26,5 +27,14 @@ while read _package ; do
 done < <(
 	find "${_workbench}/packages" -xdev -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
 )
+
+
+if test "${_mosaic_deploy_skip:-true}" != true -a "${_mosaic_deploy_rpm:-false}" == true ; then
+	echo "[ii] updating repository..." >&2
+	test -n "${_mosaic_deploy_rpm_store}"
+	createrepo -- "${_mosaic_deploy_rpm_store}"
+	echo "[--]" >&2
+fi
+
 
 exit 0
