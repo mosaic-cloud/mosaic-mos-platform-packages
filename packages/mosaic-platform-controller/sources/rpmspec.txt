@@ -3,17 +3,17 @@
 Name:         @{package_name}
 Version:      @{package_version}
 Release:      @{package_revision}
+BuildArch:    @{package_architecture}
 Url:          http://developers.mosaic-cloud.eu/
 License:      Apache 2.0
 Summary:      mOSAIC platform controller
 
-Source:       @{package_name}--@{package_version}-@{package_revision}--rootfs.cpio
+Source:       @{package_name}--@{package_version}-@{package_revision}-@{package_architecture}--rootfs.cpio
 Requires:     mosaic-rt-erlang-r15b
 Requires:     mosaic-rt-nodejs-v0.10
 Requires:     glibc-32bit
 Requires:     iptables
 AutoReqProv:  no
-BuildArch:    noarch
 
 %description
 	mOSAIC platform controller
@@ -27,7 +27,7 @@ BuildArch:    noarch
 			--make-directories \
 			--no-preserve-owner \
 			--quiet \
-		<"${RPM_SOURCE_DIR}/@{package_name}--@{package_version}-@{package_revision}--rootfs.cpio"
+		<"${RPM_SOURCE_DIR}/@{package_name}--@{package_version}-@{package_revision}-@{package_architecture}--rootfs.cpio"
 	chmod -R +w -- .
 
 

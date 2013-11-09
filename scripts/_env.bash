@@ -56,6 +56,8 @@ _rpmbuild_env=(
 		"${_generic_env[@]}"
 )
 _rpmbuild_sources="${HOME}/rpmbuild/SOURCES"
+_rpmbuild_rpms="${HOME}/rpmbuild/RPMS"
+_rpmbuild_arch=noarch
 
 _curl_arguments=(
 		--silent
@@ -71,6 +73,7 @@ _package_name="$( basename -- "$( readlink -e -- . )" )"
 _package_timestamp="$( date -u '+%s' )"
 _package_revision="${mosaic_package_revision:-${_package_timestamp}}"
 _package_version="${mosaic_package_version:-${_distribution_version}}"
+_package_architecture="${_rpmbuild_arch}"
 
 
 _sed_variables=(
@@ -80,4 +83,5 @@ _sed_variables=(
 			-e 's#@\{package_version\}#'"${_package_version}"'#g'
 			-e 's#@\{package_revision\}#'"${_package_revision}"'#g'
 			-e 's#@\{package_timestamp\}#'"${_package_timestamp}"'#g'
+			-e 's#@\{package_architecture\}#'"${_package_architecture}"'#g'
 )

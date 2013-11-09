@@ -12,5 +12,8 @@ env "${_rpmbuild_env[@]}" "${_rpmbuild_bin}" \
 		-bb \
 		-- "${_outputs}/package.spec"
 
+cp -T -- \
+		"${_rpmbuild_rpms}/${_package_architecture}/${_package_name}-${_package_version}-${_package_revision}.${_package_architecture}.rpm" \
+		"${_outputs}/package.rpm"
 
 exit 0

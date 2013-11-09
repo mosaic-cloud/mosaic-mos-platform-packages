@@ -47,7 +47,7 @@ fi
 
 cp -T -- \
 		"${_outputs}/rootfs.cpio" \
-		"${_rpmbuild_sources}/${_package_name}--${_package_version}-${_package_revision}--rootfs.cpio"
+		"${_rpmbuild_sources}/${_package_name}--${_package_version}-${_package_revision}-${_package_architecture}--rootfs.cpio"
 
 
 #echo "[ii] running \`rpmbuild -bp\`..." >&2
