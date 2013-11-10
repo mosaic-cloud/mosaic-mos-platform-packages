@@ -31,6 +31,9 @@ if test ! -e "${_outputs}" ; then
 fi
 
 
+touch -d "$( date -u -d "@${_package_timestamp}" )" -- "${_outputs}/package.timestamp"
+
+
 "${_scripts}/assemble"
 "${_scripts}/bundle"
 

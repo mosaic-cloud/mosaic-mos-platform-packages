@@ -68,10 +68,15 @@ _curl_env=(
 )
 
 
+if test -e "${_outputs}/package.timestamp" ; then
+	_package_timestamp="$( date -u -r "${_outputs}/package.timestamp" '+%s' )"
+else
+	_package_timestamp="$( date -u '+%s' )"
+fi
+
 _distribution_version="${mosaic_distribution_version:-0.7.0}"
 _package_name="$( basename -- "$( readlink -e -- . )" )"
 _package_version="${mosaic_package_version:-${_distribution_version}}"
-_package_timestamp="$( date -u '+%s' )"
 _package_revision="${mosaic_package_revision:-${_package_timestamp}}"
 _package_architecture="${_rpmbuild_arch}"
 

@@ -33,10 +33,11 @@ AutoReqProv:  no
 
 %files
 	%defattr(-,root,root,-)
-	/opt/mosaic-platform-controller/bin/
-	/opt/mosaic-platform-controller/lib/
-	/opt/mosaic-platform-controller-wui/bin/
-	/opt/mosaic-platform-controller-wui/lib/
-	/opt/mosaic-platform-controller-boot/bin/
-	/opt/mosaic-platform-components-me2cp/bin/
-	/opt/mosaic-platform-components-me2cp/lib/
+	/opt/mosaic-platform-controller/bin
+	/opt/mosaic-platform-controller/lib
+	/opt/mosaic-platform-controller-wui/bin
+	/opt/mosaic-platform-controller-wui/lib
+	/opt/mosaic-platform-controller-boot/bin
+	/opt/mosaic-platform-controller-boot/lib
+	/opt/mosaic-platform-components-me2cp/bin
+	/opt/mosaic-platform-components-me2cp/lib
