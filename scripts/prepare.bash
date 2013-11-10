@@ -34,30 +34,4 @@ fi
 touch -d "$( date -u -d "@${_package_timestamp}" )" -- "${_outputs}/package.timestamp"
 
 
-"${_scripts}/assemble"
-"${_scripts}/bundle"
-
-
-echo "[ii] preparing \`rpmbuild\` files..." >&2
-
-if test ! -e "${_rpmbuild_sources}" ; then
-	mkdir -- "${_rpmbuild_sources}"
-fi
-
-"${_sed_variables[@]}" \
-	>|"${_outputs}/package.spec" \
-	<"${_sources}/rpmspec.txt"
-
-cp -T -- \
-		"${_outputs}/rootfs.cpio" \
-		"${_rpmbuild_sources}/${_package_name}--${_package_version}-${_package_revision}-${_package_architecture}--rootfs.cpio"
-
-
-#echo "[ii] running \`rpmbuild -bp\`..." >&2
-#
-#env "${_rpmbuild_env[@]}" "${_rpmbuild_bin}" \
-#		-bp \
-#		-- "${_outputs}/package.spec"
-
-
 exit 0
