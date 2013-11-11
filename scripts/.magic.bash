@@ -24,6 +24,10 @@ while read _package ; do
 	fi
 	echo "[--]" >&2
 	
+	if test "${_mosaic_timestamp_flush:-true}" == true ; then
+		touch -- "${_workbench}/packages/${_package}/.outputs/package.timestamp"
+	fi
+	
 done < <(
 	find "${_workbench}/packages" -xdev -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
 )

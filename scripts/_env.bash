@@ -57,7 +57,7 @@ _rpmbuild_env=(
 )
 _rpmbuild_sources="${HOME}/rpmbuild/SOURCES"
 _rpmbuild_rpms="${HOME}/rpmbuild/RPMS"
-_rpmbuild_arch=noarch
+_rpmbuild_arch=x86_64
 
 _curl_arguments=(
 		# --progress-bar
