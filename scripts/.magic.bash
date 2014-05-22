@@ -12,19 +12,23 @@ while read _package ; do
 	"${_workbench}/packages/${_package}/scripts/prepare"
 	echo "[--]" >&2
 	
+	echo "[ii] building \`${_package}\`..." >&2
+	"${_workbench}/packages/${_package}/scripts/build"
+	echo "[--]" >&2
+	
 	echo "[ii] packaging \`${_package}\`..." >&2
 	"${_workbench}/packages/${_package}/scripts/package"
 	echo "[--]" >&2
 	
 	echo "[ii] deploying \`${_package}\`..." >&2
-	if test "${_mosaic_deploy_skip:-true}" != true ; then
+	if test "${pallur_deploy_skip:-true}" != true ; then
 		"${_workbench}/packages/${_package}/scripts/deploy"
 	else
 		echo "[ww]   -- skipped!" >&2
 	fi
 	echo "[--]" >&2
 	
-	if test "${_mosaic_timestamp_flush:-true}" == true ; then
+	if test "${pallur_package_timestamp_flush:-true}" == true ; then
 		touch -- "${_workbench}/packages/${_package}/.outputs/package.timestamp"
 	fi
 	
@@ -33,10 +37,10 @@ done < <(
 )
 
 
-if test "${_mosaic_deploy_skip:-true}" != true -a "${_mosaic_deploy_rpm:-false}" == true ; then
+if test "${pallur_deploy_skip:-true}" != true -a "${pallur_deploy_rpm:-false}" == true ; then
 	echo "[ii] updating repository..." >&2
-	test -n "${_mosaic_deploy_rpm_store}"
-	createrepo -- "${_mosaic_deploy_rpm_store}"
+	test -n "${pallur_deploy_rpm_store}"
+	createrepo -- "${pallur_deploy_rpm_store}"
 	echo "[--]" >&2
 fi
 

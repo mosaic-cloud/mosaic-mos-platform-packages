@@ -6,6 +6,8 @@ if ! test "${#}" -eq 0 ; then
 fi
 
 
+echo "[ii] assembling rootfs..." >&2
+
 "${_scripts}/assemble-clean"
 "${_scripts}/assemble-core"
 "${_scripts}/assemble-overlays"

@@ -9,7 +9,7 @@ fi
 test -e "${_outputs}/rootfs"
 
 
-echo "[ii] cleaning artifacts..." >&2
+echo "[ii] cleaning rootfs archives..." >&2
 
 for _path in \
 			"${_outputs}/rootfs.cpio" "${_outputs}/rootfs.tar"

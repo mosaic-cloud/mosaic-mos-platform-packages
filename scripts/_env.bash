@@ -17,6 +17,8 @@ _PATH_EXTRA="${PATH_EXTRA:-}"
 _PATH_CLEAN="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 _PATH="$( echo "${_tools}/bin:${_PATH_EXTRA}:${_PATH_CLEAN}" | tr -s ':' )"
 
+_HOME="${HOME:-${_tools}/home}"
+
 
 _rpmbuild_bin="$( PATH="${_PATH}" type -P -- rpmbuild || true )"
 if test -z "${_rpmbuild_bin}" ; then
@@ -45,18 +47,18 @@ fi
 
 _generic_env=(
 		PATH="${_PATH}"
-		HOME="${HOME:-${_tools}/home}"
+		HOME="${_HOME}"
 		TMPDIR="${_temporary}"
 )
 
 _rpmbuild_arguments=(
-		-v
+		--quiet
 )
 _rpmbuild_env=(
 		"${_generic_env[@]}"
 )
-_rpmbuild_sources="${HOME}/rpmbuild/SOURCES"
-_rpmbuild_rpms="${HOME}/rpmbuild/RPMS"
+_rpmbuild_sources="${_HOME}/rpmbuild/SOURCES"
+_rpmbuild_rpms="${_HOME}/rpmbuild/RPMS"
 _rpmbuild_arch=x86_64
 
 _curl_arguments=(
@@ -74,10 +76,10 @@ else
 	_package_timestamp="$( date -u '+%s' )"
 fi
 
-_distribution_version="${mosaic_distribution_version:-0.7.0}"
+_distribution_version="${pallur_distribution_version:-0.7.0_dev}"
 _package_name="$( basename -- "$( readlink -e -- . )" )"
-_package_version="${mosaic_package_version:-${_distribution_version}}"
-_package_revision="${mosaic_package_revision:-${_package_timestamp}}"
+_package_version="${pallur_package_version:-${_distribution_version}}"
+_package_revision="${pallur_package_revision:-${_package_timestamp}}"
 _package_architecture="${_rpmbuild_arch}"
 
 
