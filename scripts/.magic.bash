@@ -8,6 +8,10 @@ fi
 
 while read _package ; do
 	
+	if test -e "${_workbench}/packages/${_package}/sources/.disabled" ; then
+		continue
+	fi
+	
 	echo "[ii] preparing \`${_package}\`..." >&2
 	"${_workbench}/packages/${_package}/scripts/prepare"
 	echo "[--]" >&2
@@ -33,7 +37,8 @@ while read _package ; do
 	fi
 	
 done < <(
-	find "${_workbench}/packages" -xdev -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
+	find "${_workbench}/packages" -xdev -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
+	| sort
 )
 
 

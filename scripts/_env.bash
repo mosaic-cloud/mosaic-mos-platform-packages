@@ -44,6 +44,18 @@ if test -z "${_tar_bin}" ; then
 	_tar_bin=tar
 fi
 
+_zip_bin="$( PATH="${_PATH}" type -P -- zip || true )"
+if test -z "${_zip_bin}" ; then
+	echo "[ww] missing \`zip\` executable in path: \`${_PATH}\`; ignoring!" >&2
+	_zip_bin=zip
+fi
+
+_unzip_bin="$( PATH="${_PATH}" type -P -- unzip || true )"
+if test -z "${_unzip_bin}" ; then
+	echo "[ww] missing \`unzip\` executable in path: \`${_PATH}\`; ignoring!" >&2
+	_unzip_bin=unzip
+fi
+
 
 _generic_env=(
 		PATH="${_PATH}"
@@ -85,10 +97,25 @@ _package_architecture="${_rpmbuild_arch}"
 
 _sed_variables=(
 	sed -r
+			-e ': loop'
 			-e 's#@\{distribution_version\}#'"${_distribution_version}"'#g'
 			-e 's#@\{package_name\}#'"${_package_name}"'#g'
 			-e 's#@\{package_version\}#'"${_package_version}"'#g'
 			-e 's#@\{package_revision\}#'"${_package_revision}"'#g'
 			-e 's#@\{package_timestamp\}#'"${_package_timestamp}"'#g'
 			-e 's#@\{package_architecture\}#'"${_package_architecture}"'#g'
+)
+
+while read _variable _variable_value ; do
+	_sed_variables+=(
+			-e 's#@\{'"${_variable}"'\}#'"${_variable_value}"'#g'
+	)
+done < <(
+	if test -e "${_sources}/variables.txt" ; then
+		cat -- "${_sources}/variables.txt"
+	fi
+)
+
+_sed_variables+=(
+		-e 't loop'
 )
