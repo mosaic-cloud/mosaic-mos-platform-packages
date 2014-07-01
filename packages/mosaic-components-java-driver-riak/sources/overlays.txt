@@ -1,0 +1,1 @@
+/opt/mosaic-components-java-driver-riak curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-components-java-driver-riak--@{distribution_version}.tar.gz

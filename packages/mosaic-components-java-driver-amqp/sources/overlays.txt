@@ -1,0 +1,1 @@
+/opt/mosaic-components-java-driver-amqp curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-components-java-driver-amqp--@{distribution_version}.tar.gz
