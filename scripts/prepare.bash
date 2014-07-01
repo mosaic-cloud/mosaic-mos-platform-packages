@@ -31,6 +31,17 @@ if test ! -e "${_outputs}" ; then
 fi
 
 
+if test ! -e "${_HOME}" ; then
+	mkdir -- "${_HOME}"
+fi
+if test ! -e "${_TMPDIR}" ; then
+	mkdir -- "${_TMPDIR}"
+fi
+if test ! -e "${_rpmbuild_root}" ; then
+	mkdir -- "${_rpmbuild_root}"
+fi
+
+
 touch -d "$( date -u -d "@${_package_timestamp}" )" -- "${_outputs}/package.timestamp"
 
 
