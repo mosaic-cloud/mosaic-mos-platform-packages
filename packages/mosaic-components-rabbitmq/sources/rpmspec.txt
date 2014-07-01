@@ -10,7 +10,7 @@ Summary:      mOSAIC components RabbitMQ
 
 Source:       @{package_name}--@{package_version}-@{package_revision}-@{package_architecture}--rootfs.cpio
 Provides:     @{package_name}
-Requires:     mosaic-rt-erlang-r15b
+Requires:     mosaic-rt-erlang-r15b-32bit
 Requires:     glibc-32bit
 AutoReqProv:  no
 
