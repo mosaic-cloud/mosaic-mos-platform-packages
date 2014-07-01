@@ -64,15 +64,17 @@ _generic_env=(
 		TMPDIR="${_TMPDIR}"
 )
 
+_rpmbuild_root="${_outputs}/rpmbuild"
+_rpmbuild_sources="${_rpmbuild_root}/SOURCES"
+_rpmbuild_rpms="${_rpmbuild_root}/RPMS"
+_rpmbuild_arch=x86_64
 _rpmbuild_arguments=(
 		--quiet
+		--define "_topdir ${_rpmbuild_root}"
 )
 _rpmbuild_env=(
 		"${_generic_env[@]}"
 )
-_rpmbuild_sources="${_HOME}/rpmbuild/SOURCES"
-_rpmbuild_rpms="${_HOME}/rpmbuild/RPMS"
-_rpmbuild_arch=x86_64
 
 _curl_arguments=(
 		# --progress-bar
