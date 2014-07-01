@@ -6,18 +6,19 @@ export -n BASH_ENV
 
 
 _workbench="$( readlink -e -- . )"
-_repositories="${_workbench}/repositories"
 _sources="${_workbench}/sources"
 _scripts="${_workbench}/scripts"
 _outputs="${_workbench}/.outputs"
-_tools="${_workbench}/.tools"
-_temporary="/tmp"
+_tools="${pallur_tools:-${_workbench}/.tools}"
+_temporary="${pallur_temporary:-${pallur_TMPDIR:-${TMPDIR:-/tmp}}}"
+
+_PATH="${pallur_PATH:-${_tools}/bin:${PATH}}"
+_HOME="${pallur_HOME:-${HOME}}"
+_TMPDIR="${pallur_TMPDIR:-${TMPDIR:-${_temporary}}}"
 
 _PATH_EXTRA="${PATH_EXTRA:-}"
 _PATH_CLEAN="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
-_PATH="$( echo "${_tools}/bin:${_PATH_EXTRA}:${_PATH_CLEAN}" | tr -s ':' )"
-
-_HOME="${HOME:-${_tools}/home}"
+_PATH="$( echo "${_PATH}:${_PATH_EXTRA}:${_PATH_CLEAN}" | tr -s ':' )"
 
 
 _rpmbuild_bin="$( PATH="${_PATH}" type -P -- rpmbuild || true )"
@@ -60,7 +61,7 @@ fi
 _generic_env=(
 		PATH="${_PATH}"
 		HOME="${_HOME}"
-		TMPDIR="${_temporary}"
+		TMPDIR="${_TMPDIR}"
 )
 
 _rpmbuild_arguments=(
