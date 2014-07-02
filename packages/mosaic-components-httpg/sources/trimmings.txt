@@ -1,0 +1,1 @@
+delete /opt/mosaic-components-httpg/pkg.json

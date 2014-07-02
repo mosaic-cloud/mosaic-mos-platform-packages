@@ -1,0 +1,1 @@
+/opt/mosaic-components-httpg curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-components-httpg--@{distribution_version}.tar.gz
