@@ -1,1 +1,0 @@
-delete /opt/mosaic-components-java-component-container/pkg.json

@@ -1,48 +1,20 @@
 #!/dev/null
 
-if ! test "${#}" -eq 0 ; then
+if test "${#}" -eq 0 ; then
+	exec "${_scripts}/.magic" prepare
+	exit 1
+fi
+
+if ! test "${#}" -eq 1 ; then
 	echo "[ee] invalid arguments; aborting!" >&2
 	exit 1
 fi
 
-
-if test ! -e "${_temporary}" ; then
-	if test -L "${_temporary}" ; then
-		_temporary_store="$( readlink -- "${_temporary}" )"
-	else
-		_temporary_store="${_temporary}"
-	fi
-	if test ! -e "${_temporary_store}" ; then
-		mkdir -- "${_temporary_store}"
-	fi
-fi
-
+_package="${1}"
+test -d "${_packages}/${_package}"
 
 if test ! -e "${_outputs}" ; then
-	if test -L "${_outputs}" ; then
-		_outputs_store="$( readlink -- "${_outputs}" )"
-	else
-		_outputs_store="${_temporary}/$( basename -- "${_workbench}" )--$( readlink -m -- "${_outputs}" | tr -d '\n' | md5sum -t | tr -d ' \n-' )"
-		ln -s -T -- "${_outputs_store}" "${_outputs}"
-	fi
-	if test ! -e "${_outputs_store}" ; then
-		mkdir -- "${_outputs_store}"
-	fi
+	mkdir -- "${_outputs}"
 fi
-
-
-if test ! -e "${_HOME}" ; then
-	mkdir -- "${_HOME}"
-fi
-if test ! -e "${_TMPDIR}" ; then
-	mkdir -- "${_TMPDIR}"
-fi
-if test ! -e "${_rpmbuild_root}" ; then
-	mkdir -- "${_rpmbuild_root}"
-fi
-
-
-touch -d "$( date -u -d "@${_package_timestamp}" )" -- "${_outputs}/package.timestamp"
-
 
 exit 0

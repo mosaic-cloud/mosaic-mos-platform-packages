@@ -1,1 +1,0 @@
-/opt/mosaic-components-rabbitmq curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-components-rabbitmq--@{distribution_version}.tar.gz

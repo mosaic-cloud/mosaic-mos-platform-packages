@@ -1,4 +1,0 @@
-delete /opt/mosaic-platform-controller/pkg.json
-delete /opt/mosaic-platform-controller-wui/pkg.json
-delete /opt/mosaic-platform-controller-boot/pkg.json
-delete /opt/mosaic-platform-components-me2cp/pkg.json

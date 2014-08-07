@@ -1,1 +1,0 @@
-delete /opt/mosaic-components-couchdb/pkg.json

@@ -1,4 +1,0 @@
-/opt/mosaic-platform-controller curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-node--@{distribution_version}.tar.gz
-/opt/mosaic-platform-controller-wui curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-node-wui--@{distribution_version}.tar.gz
-/opt/mosaic-platform-controller-boot curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-node-boot--@{distribution_version}.tar.gz
-/opt/mosaic-platform-components-me2cp curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-components-me2cp--@{distribution_version}.tar.gz

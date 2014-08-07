@@ -1,1 +1,0 @@
-/opt/mosaic-components-couchdb curl-tar-gz http://data.volution.ro/ciprian/public/mosaic/packages/mosaic-components-couchdb--@{distribution_version}.tar.gz
