@@ -17,8 +17,8 @@ _TMPDIR="${pallur_TMPDIR:-${TMPDIR:-${_temporary}}}"
 
 _python2_bin="$( PATH="${_PATH}" type -P -- python2 || true )"
 if test -z "${_python2_bin}" ; then
-	echo "[ww] missing \`python2\` executable in path: \`${_PATH}\`; ignoring!" >&2
-	_python2_bin=python2
+	echo "[ee] missing \`python2\` executable in path: \`${_PATH}\`; ignoring!" >&2
+	_python2_bin=false
 fi
 
 _generic_env=(
