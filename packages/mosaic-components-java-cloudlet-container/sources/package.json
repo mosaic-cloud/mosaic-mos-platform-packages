@@ -47,13 +47,9 @@
 	
 	"definitions" : {
 		"package:name" : "mosaic-components-java-cloudlet-container",
-		"package:version" : "@{definitions:distribution:version}.@{definitions:distribution:release}_@{definitions:distribution:label}",
+		"package:version" : "0.7.0_dev",
 		"package:release" : "@{execution:timestamp}",
-		"distribution:version" : "0.7.0",
-		"distribution:release" : "5",
-		"distribution:label" : "mosaic",
-		"distribution:identifier" : "@{definitions:distribution:version}.@{definitions:distribution:release}_@{definitions:distribution:label}",
 		"resources:url:base" : "http://data.volution.ro/ciprian/public/mosaic/packages",
-		"resources:url:suffix" : "@{definitions:distribution:identifier}"
+		"resources:url:suffix" : "@{definitions:package:version}"
 	}
 }
