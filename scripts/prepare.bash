@@ -10,8 +10,8 @@ if ! test "${#}" -eq 1 ; then
 	exit 1
 fi
 
-_package="${1}"
-test -d "${_packages}/${_package}"
+_package_name="${1}"
+test -d "${_packages}/${_package_name}"
 
 if test ! -e "${_outputs}" ; then
 	mkdir -- "${_outputs}"

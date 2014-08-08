@@ -27,3 +27,4 @@ _python2_env=(
 )
 
 _package_version="${pallur_distribution_version:-0.7.0_dev}"
+_artifacts_cache="${pallur_artifacts:-}"

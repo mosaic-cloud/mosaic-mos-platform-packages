@@ -10,14 +10,19 @@ if ! test "${#}" -eq 1 ; then
 	exit 1
 fi
 
-_package="${1}"
-test -d "${_packages}/${_package}"
+_package_name="${1}"
+test -d "${_packages}/${_package_name}"
 
 env "${_python2_env[@]}" \
-			mpb_package_name="${_package}" \
+			mpb_package_name="${_package_name}" \
 			mpb_package_version="${_package_version}" \
+			mpb_resources_cache="${_artifacts_cache}" \
 		"${_python2_bin}" "${_scripts}/package.py" \
-				"${_packages}/${_package}/sources" \
-				"${_outputs}/${_package}.rpm"
+				"${_packages}/${_package_name}/sources" \
+				"${_outputs}/${_package_name}.rpm"
+
+if test -n "${_artifacts_cache}" ; then
+	cp -T -- "${_outputs}/${_package_name}.rpm" "${_artifacts_cache}/${_package_name}--${_package_version}.rpm"
+fi
 
 exit 0

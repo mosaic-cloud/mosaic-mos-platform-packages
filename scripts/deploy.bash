@@ -10,16 +10,14 @@ if ! test "${#}" -eq 1 ; then
 	exit 1
 fi
 
-_package="${1}"
-test -d "${_packages}/${_package}"
-
-_package_name="${_package}"
+_package_name="${1}"
+test -d "${_packages}/${_package_name}"
 
 if test "${pallur_deploy_cp:-false}" == true ; then
 	test -n "${pallur_deploy_cp_store}"
 	pallur_deploy_cp_target="${pallur_deploy_cp_store}/${_package_name}-${_package_version}.rpm"
 	echo "[ii] deploying via \`cp\` method to \`${pallur_deploy_cp_target}\`..." >&2
-	cp -T -- "${_outputs}/${_package}.rpm" "${pallur_deploy_cp_target}"
+	cp -T -- "${_outputs}/${_package_name}.rpm" "${pallur_deploy_cp_target}"
 fi
 
 if test "${pallur_deploy_curl:-false}" == true ; then
@@ -29,7 +27,7 @@ if test "${pallur_deploy_curl:-false}" == true ; then
 	echo "[ii] deploying via \`curl\` method to \`${pallur_deploy_curl_target}\`..." >&2
 	env -i "${_curl_env[@]}" "${_curl_bin}" "${_curl_args[@]}" \
 			--anyauth --user "${pallur_deploy_curl_credentials}" \
-			--upload-file "${_outputs}/${_package}.rpm" \
+			--upload-file "${_outputs}/${_package_name}.rpm" \
 			-- "${pallur_deploy_curl_target}"
 fi
 
