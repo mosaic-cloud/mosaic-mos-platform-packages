@@ -26,8 +26,4 @@ _python2_env=(
 		"${_generic_env[@]}"
 )
 
-#_distribution_version="${pallur_distribution_version:-0.7.0_dev}"
-#_package_name="$( basename -- "$( readlink -e -- . )" )"
-#_package_version="${pallur_package_version:-${_distribution_version}}"
-#_package_revision="${pallur_package_revision:-${_package_timestamp}}"
-#_package_architecture="${_rpmbuild_arch}"
+_package_version="${pallur_distribution_version:-0.7.0_dev}"

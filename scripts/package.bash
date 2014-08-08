@@ -14,6 +14,8 @@ _package="${1}"
 test -d "${_packages}/${_package}"
 
 env "${_python2_env[@]}" \
+			mpb_package_name="${_package}" \
+			mpb_package_version="${_package_version}" \
 		"${_python2_bin}" "${_scripts}/package.py" \
 				"${_packages}/${_package}/sources" \
 				"${_outputs}/${_package}.rpm"
