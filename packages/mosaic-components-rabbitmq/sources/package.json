@@ -41,7 +41,8 @@
 	"resources" : {
 		"mosaic-components-rabbitmq.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-rabbitmq--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-components-rabbitmq--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-components-rabbitmq--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	

@@ -41,7 +41,8 @@
 	"resources" : {
 		"mosaic-components-riak.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-riak-kv--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-components-riak-kv--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-components-riak-kv--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	

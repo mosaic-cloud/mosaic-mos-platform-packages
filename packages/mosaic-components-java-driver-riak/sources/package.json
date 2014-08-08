@@ -41,7 +41,8 @@
 	"resources" : {
 		"mosaic-components-java-driver-riak.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-java-driver-riak--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-components-java-driver-riak--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-components-java-driver-riak--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	

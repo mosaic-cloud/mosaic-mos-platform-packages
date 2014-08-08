@@ -41,7 +41,8 @@
 	"resources" : {
 		"mosaic-components-java-cloudlet-container.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-java-cloudlet-container--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-components-java-cloudlet-container--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-components-java-cloudlet-container--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	

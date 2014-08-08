@@ -71,15 +71,18 @@
 	"resources" : {
 		"mosaic-node.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-node--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-node--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-node--@{definitions:resources:url:suffix}.cpio.gz"
 		},
 		"mosaic-node-wui.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-node-wui--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-node-wui--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-node-wui--@{definitions:resources:url:suffix}.cpio.gz"
 		},
 		"mosaic-node-boot.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	

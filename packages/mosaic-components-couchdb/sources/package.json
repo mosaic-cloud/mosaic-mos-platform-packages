@@ -41,7 +41,8 @@
 	"resources" : {
 		"mosaic-components-couchdb.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-couchdb--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-components-couchdb--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-components-couchdb--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	

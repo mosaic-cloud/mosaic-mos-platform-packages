@@ -41,7 +41,8 @@
 	"resources" : {
 		"mosaic-components-httpg.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-httpg--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-components-httpg--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-components-httpg--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	
