@@ -21,7 +21,7 @@
 	"miscellaneous" : {
 		"license" : "apache-2.0",
 		"url" : "http://mosaic.ieat.ro/",
-		"summary" : "mOSAIC components: Riak"
+		"summary" : "mOSAIC components: Riak KV"
 	},
 	
 	"overlays" : [
@@ -33,13 +33,13 @@
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
-			"resource" : "mosaic-components-riak.cpio.gz",
+			"resource" : "mosaic-components-riak-kv.cpio.gz",
 			"format" : "cpio+gzip"
 		}
 	],
 	
 	"resources" : {
-		"mosaic-components-riak.cpio.gz" : {
+		"mosaic-components-riak-kv.cpio.gz" : {
 			"generator" : "fetcher",
 			"uri" : "@{definitions:resources:url:base}/mosaic-components-riak-kv--@{definitions:resources:url:suffix}.cpio.gz",
 			"cache" : "mosaic-components-riak-kv--@{definitions:resources:url:suffix}.cpio.gz"
@@ -47,7 +47,7 @@
 	},
 	
 	"definitions" : {
-		"package:name" : "mosaic-components-riak",
+		"package:name" : "mosaic-components-riak-kv",
 		"package:version" : "0.7.0_dev",
 		"package:release" : "@{execution:timestamp}",
 		"resources:url:base" : "http://data.volution.ro/ciprian/public/mosaic/packages",
