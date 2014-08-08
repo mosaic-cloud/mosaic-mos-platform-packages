@@ -17,7 +17,7 @@ env "${_python2_env[@]}" \
 			mpb_package_name="${_package_name}" \
 			mpb_package_version="${_package_version}" \
 			mpb_resources_cache="${_artifacts_cache}" \
-		"${_python2_bin}" "${_scripts}/package.py" \
+		"${_python2_bin}" "${_python2_args[@]}" "${_scripts}/package.py" \
 				"${_packages}/${_package_name}/sources" \
 				"${_outputs}/${_package_name}.rpm"
 

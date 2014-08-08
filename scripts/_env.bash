@@ -15,13 +15,21 @@ _PATH="${pallur_PATH:-${_tools}/bin:${PATH}}"
 _HOME="${pallur_HOME:-${HOME}}"
 _TMPDIR="${pallur_TMPDIR:-${TMPDIR:-${_temporary}}}"
 
+_python2_bin="$( PATH="${_PATH}" type -P -- python2 || true )"
+if test -z "${_python2_bin}" ; then
+	echo "[ww] missing \`python2\` executable in path: \`${_PATH}\`; ignoring!" >&2
+	_python2_bin=python2
+fi
+
 _generic_env=(
 		PATH="${_PATH}"
 		HOME="${_HOME}"
 		TMPDIR="${_TMPDIR}"
 )
 
-_python2_bin=/usr/bin/python2
+_python2_args=(
+		-B -E
+)
 _python2_env=(
 		"${_generic_env[@]}"
 )
