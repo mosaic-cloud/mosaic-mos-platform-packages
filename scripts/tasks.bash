@@ -13,16 +13,16 @@ while read _package_name ; do
 	
 	cat <<EOS
 
-${_package_name}-rpm@requisites : pallur-packages@python2 pallur-packages@rpm pallur-bootstrap
+${_package_name}-rpm@requisites : pallur-packages@python-${_python_version} pallur-packages@rpm pallur-bootstrap
 
 ${_package_name}-rpm@prepare : ${_package_name}-rpm@requisites ${_package_name}@package
-	${_scripts}/prepare ${_package_name}
+	!exec ${_scripts}/prepare ${_package_name}
 
 ${_package_name}-rpm@package : ${_package_name}-rpm@prepare
-	${_scripts}/package ${_package_name}
+	!exec ${_scripts}/package ${_package_name}
 
 ${_package_name}-rpm@deploy : ${_package_name}-rpm@package
-	${_scripts}/deploy ${_package_name}
+	!exec ${_scripts}/deploy ${_package_name}
 
 pallur-distribution@requisites : ${_package_name}-rpm@requisites
 pallur-distribution@prepare : ${_package_name}-rpm@prepare
@@ -38,7 +38,7 @@ done < <(
 
 cat <<EOS
 
-mosaic-platform-controller@package : mosaic-node@package mosaic-node-wui@package mosaic-node-boot@package
+mosaic-platform-core@package : mosaic-node-boot@package
 
 EOS
 
