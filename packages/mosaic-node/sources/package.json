@@ -44,6 +44,7 @@
 			"generator" : "symlinks",
 			"target" : "@{package:root}/env/paths",
 			"links" : {
+				"11:applications-elf" : "../../lib/applications-elf",
 				"21:erlang" : "/opt/mosaic-rt-erlang-r15b-32bit/bin",
 				"51:bin" : "/bin",
 				"52:usr-bin" : "/usr/bin"
