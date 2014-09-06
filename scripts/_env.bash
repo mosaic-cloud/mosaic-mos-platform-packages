@@ -15,10 +15,16 @@ _PATH="${pallur_PATH:-${_tools}/bin:${PATH}}"
 _HOME="${pallur_HOME:-${HOME}}"
 _TMPDIR="${pallur_TMPDIR:-${TMPDIR:-${_temporary}}}"
 
-_python2_bin="$( PATH="${_PATH}" type -P -- python2 || true )"
-if test -z "${_python2_bin}" ; then
-	echo "[ee] missing \`python2\` executable in path: \`${_PATH}\`; ignoring!" >&2
-	_python2_bin=false
+if test -n "${pallur_pkg_python:-}" ; then
+	_python_bin="${pallur_pkg_python}/bin/python"
+elif test -e "${_tools}/pkg/python" ; then
+	_python_bin="${_tools}/pkg/python/bin/python"
+else
+	_python_bin="$( PATH="${_PATH}" type -P -- python || true )"
+fi
+if test -z "${_python_bin}" ; then
+	echo "[ee] missing \`python\` executable in path: \`${_PATH}\`; ignoring!" >&2
+	_python_bin=false
 fi
 
 _generic_env=(
@@ -27,12 +33,13 @@ _generic_env=(
 		TMPDIR="${_TMPDIR}"
 )
 
-_python2_args=(
+_python_args=(
 		-B -E
 )
-_python2_env=(
+_python_env=(
 		"${_generic_env[@]}"
 )
+_python_version=2
 
 _package_version="${pallur_distribution_version:-0.7.0_dev}"
 _artifacts_cache="${pallur_artifacts:-}"
