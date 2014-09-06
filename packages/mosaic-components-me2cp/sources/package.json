@@ -11,7 +11,6 @@
 	},
 	
 	"dependencies" : {
-		"provides" : ["@{definitions:package:name}"],
 		"requires" : [
 			"glibc-32bit"
 		]
@@ -27,13 +26,25 @@
 		{
 			"generator" : "folders",
 			"target" : "@{package:root}",
-			"folders" : ["/"]
+			"folders" : [
+				"/",
+				"/env",
+				"/env/paths"
+			]
 		},
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
 			"resource" : "mosaic-components-me2cp.cpio.gz",
 			"format" : "cpio+gzip"
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/paths",
+			"links" : {
+				"51:bin" : "/bin",
+				"52:usr-bin" : "/usr/bin"
+			}
 		}
 	],
 	

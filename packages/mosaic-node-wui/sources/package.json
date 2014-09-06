@@ -12,15 +12,14 @@
 	
 	"dependencies" : {
 		"requires" : [
-			"mosaic-rt-jre-7-32bit",
-			"glibc-32bit"
+			"mosaic-rt-nodejs-v0.10-32bit"
 		]
 	},
 	
 	"miscellaneous" : {
 		"license" : "apache-2.0",
 		"url" : "http://mosaic.ieat.ro/",
-		"summary" : "mOSAIC components: Java driver for Riak"
+		"summary" : "mOSAIC platform node WUI"
 	},
 	
 	"overlays" : [
@@ -29,6 +28,7 @@
 			"target" : "@{package:root}",
 			"folders" : [
 				"/",
+				"/lib",
 				"/env",
 				"/env/paths"
 			]
@@ -36,14 +36,14 @@
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
-			"resource" : "mosaic-components-java-driver-riak.cpio.gz",
+			"resource" : "mosaic-node-wui.cpio.gz",
 			"format" : "cpio+gzip"
 		},
 		{
 			"generator" : "symlinks",
 			"target" : "@{package:root}/env/paths",
 			"links" : {
-				"21:java" : "/opt/mosaic-rt-jre-7-32bit/bin",
+				"21:nodejs" : "/opt/mosaic-rt-nodejs-v0.10-32bit/bin",
 				"51:bin" : "/bin",
 				"52:usr-bin" : "/usr/bin"
 			}
@@ -51,15 +51,15 @@
 	],
 	
 	"resources" : {
-		"mosaic-components-java-driver-riak.cpio.gz" : {
+		"mosaic-node-wui.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-components-java-driver-riak--@{definitions:resources:url:suffix}.cpio.gz",
-			"cache" : "mosaic-components-java-driver-riak--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:url:base}/mosaic-node-wui--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-node-wui--@{definitions:resources:url:suffix}.cpio.gz"
 		}
 	},
 	
 	"definitions" : {
-		"package:name" : "mosaic-components-java-driver-riak",
+		"package:name" : "mosaic-node-wui",
 		"package:version" : "0.7.0_dev",
 		"package:release" : "@{execution:timestamp}",
 		"resources:url:base" : "http://data.volution.ro/ciprian/public/mosaic/packages",

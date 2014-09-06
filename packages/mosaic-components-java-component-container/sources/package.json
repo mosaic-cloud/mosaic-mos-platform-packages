@@ -11,7 +11,6 @@
 	},
 	
 	"dependencies" : {
-		"provides" : ["@{definitions:package:name}"],
 		"requires" : [
 			"mosaic-rt-jre-7-32bit",
 			"glibc-32bit"
@@ -28,13 +27,26 @@
 		{
 			"generator" : "folders",
 			"target" : "@{package:root}",
-			"folders" : ["/"]
+			"folders" : [
+				"/",
+				"/env",
+				"/env/paths"
+			]
 		},
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
 			"resource" : "mosaic-components-java-component-container.cpio.gz",
 			"format" : "cpio+gzip"
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/paths",
+			"links" : {
+				"21:java" : "/opt/mosaic-rt-jre-7-32bit/bin",
+				"51:bin" : "/bin",
+				"52:usr-bin" : "/usr/bin"
+			}
 		}
 	],
 	

@@ -11,7 +11,6 @@
 	},
 	
 	"dependencies" : {
-		"provides" : ["@{definitions:package:name}"],
 		"requires" : [
 			"mosaic-rt-erlang-r15b-32bit",
 			"glibc-32bit"
@@ -28,13 +27,26 @@
 		{
 			"generator" : "folders",
 			"target" : "@{package:root}",
-			"folders" : ["/"]
+			"folders" : [
+				"/",
+				"/env",
+				"/env/paths"
+			]
 		},
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
 			"resource" : "mosaic-components-riak-kv.cpio.gz",
 			"format" : "cpio+gzip"
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/paths",
+			"links" : {
+				"21:erlang" : "/opt/mosaic-rt-erlang-r15b-32bit/bin",
+				"51:bin" : "/bin",
+				"52:usr-bin" : "/usr/bin"
+			}
 		}
 	],
 	

@@ -11,7 +11,6 @@
 	},
 	
 	"dependencies" : {
-		"provides" : ["@{definitions:package:name}"],
 		"requires" : [
 			"mariadb",
 			"glibc-32bit"
@@ -28,13 +27,54 @@
 		{
 			"generator" : "folders",
 			"target" : "@{package:root}",
-			"folders" : ["/"]
+			"folders" : [
+				"/",
+				"/lib",
+				"/lib/mysql",
+				"/lib/mysql/bin",
+				"/lib/mysql/lib",
+				"/lib/mysql/lib/sql",
+				"/env",
+				"/env/paths",
+				"/env/variables"
+			]
 		},
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
 			"resource" : "mosaic-components-mysql.cpio.gz",
 			"format" : "cpio+gzip"
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/paths",
+			"links" : {
+				"51:bin" : "/bin",
+				"52:usr-bin" : "/usr/bin"
+			}
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/lib/mysql",
+			"links" : {
+				"lib/plugins" : "/usr/lib64/mysql/plugin",
+				"lib/charsets" : "/usr/share/mariadb/charsets",
+				"lib/sql/mysql_system_tables.sql" : "/usr/share/mariadb/mysql_system_tables.sql",
+				"lib/sql/mysql_system_tables_data.sql" : "/usr/share/mariadb/mysql_system_tables_data.sql",
+				"lib/sql/mysql_performance_tables.sql" : "/usr/share/mariadb/mysql_performance_tables.sql",
+				"bin/mysqld" : "/usr/sbin/mysqld"
+			}
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/variables",
+			"links" : {
+				"@@a:mosaic_components_mysql__server_executable" : "../../lib/mysql/bin/mysqld",
+				"@@a:mosaic_components_mysql__server_plugins" : "../../lib/mysql/lib/plugins",
+				"@@a:mosaic_components_mysql__server_charsets" : "../../lib/mysql/lib/charsets",
+				"@@a:mosaic_components_mysql__sql_scripts" : "../../lib/mysql/lib/sql",
+				"@@a:mosaic_components_mysql__package" : "/usr"
+			}
 		}
 	],
 	
