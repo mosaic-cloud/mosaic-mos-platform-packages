@@ -32,13 +32,9 @@ while read _package_name ; do
 	fi
 	
 	
-	if test "${_operation:-package}" == deploy ; then
-		echo "[ii] deploying \`${_package_name}\`..." >&2
-		if test "${pallur_deploy_skip:-true}" != true ; then
-			"${_scripts}/deploy" "${_package_name}"
-		else
-			echo "[ww]   -- skipped!" >&2
-		fi
+	if test "${_operation:-package}" == publish ; then
+		echo "[ii] publishing \`${_package_name}\`..." >&2
+		"${_scripts}/publish" "${_package_name}"
 		echo "[--]" >&2
 	fi
 	

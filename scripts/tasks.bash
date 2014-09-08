@@ -22,8 +22,8 @@ ${_package_name}-rpm@prepare : ${_package_name}-rpm@requisites ${_package_name}@
 ${_package_name}-rpm@package : ${_package_name}-rpm@prepare
 	!exec ${_scripts}/package ${_package_name}
 
-${_package_name}-rpm@deploy : ${_package_name}-rpm@package
-	!exec ${_scripts}/deploy ${_package_name}
+${_package_name}-rpm@publish : ${_package_name}-rpm@package
+	!exec ${_scripts}/publish ${_package_name}
 
 EOS
 done < <(
