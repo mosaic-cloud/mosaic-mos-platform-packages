@@ -6,14 +6,15 @@ if ! test "${#}" -eq 0 ; then
 fi
 
 while read _package_name ; do
-	
 	if test -e "${_packages}/${_package_name}/sources/.disabled" ; then
 		continue
 	fi
-	
 	cat <<EOS
 
-${_package_name}-rpm@requisites : pallur-packages@python-${_python_version} pallur-packages@rpm pallur-bootstrap
+${_package_name}-rpm@requisites : \
+		pallur-packages@python-${_python_version} \
+		pallur-packages@rpm \
+		pallur-environment
 
 ${_package_name}-rpm@prepare : ${_package_name}-rpm@requisites ${_package_name}@package
 	!exec ${_scripts}/prepare ${_package_name}
@@ -24,13 +25,7 @@ ${_package_name}-rpm@package : ${_package_name}-rpm@prepare
 ${_package_name}-rpm@deploy : ${_package_name}-rpm@package
 	!exec ${_scripts}/deploy ${_package_name}
 
-pallur-distribution@requisites : ${_package_name}-rpm@requisites
-pallur-distribution@prepare : ${_package_name}-rpm@prepare
-pallur-distribution@package : ${_package_name}-rpm@package
-pallur-distribution@deploy : ${_package_name}-rpm@deploy
-
 EOS
-	
 done < <(
 	find "${_packages}" -xdev -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
 	| sort
@@ -39,6 +34,7 @@ done < <(
 cat <<EOS
 
 mosaic-platform-core@package : mosaic-node-boot@package
+mosaic-platform-java@package : mosaic-node-boot@package
 
 EOS
 
