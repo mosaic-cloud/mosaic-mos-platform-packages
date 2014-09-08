@@ -1,0 +1,89 @@
+{
+	"_schema" : "tag:ieat.ro,2014:mosaic:v2:mos-package-builder:descriptors:composite-package",
+	"_schema/version" : 1,
+	
+	"package" : {
+		"name" : "@{definitions:package:name}",
+		"version" : "@{definitions:package:version}",
+		"release" : "@{definitions:package:release}",
+		"architecture" : "i686",
+		"root" : "/opt/@{package:identifier}"
+	},
+	
+	"dependencies" : {
+		"requires" : [
+			"mosaic-node == @{definitions:package:version}",
+			"mosaic-node-wui == @{definitions:package:version}",
+			"mosaic-components-couchdb == @{definitions:package:version}",
+			"mosaic-components-rabbitmq == @{definitions:package:version}",
+			"mosaic-components-riak-kv == @{definitions:package:version}",
+			"mosaic-components-mysql == @{definitions:package:version}",
+			"mosaic-components-me2cp == @{definitions:package:version}",
+			"mosaic-components-httpg == @{definitions:package:version}",
+			"mosaic-components-java-component-container == @{definitions:package:version}",
+			"mosaic-components-java-cloudlet-container == @{definitions:package:version}",
+			"mosaic-components-java-driver-amqp == @{definitions:package:version}",
+			"mosaic-components-java-driver-riak == @{definitions:package:version}"
+		]
+	},
+	
+	"miscellaneous" : {
+		"license" : "apache-2.0",
+		"url" : "http://mosaic.ieat.ro/",
+		"summary" : "mOSAIC platform core"
+	},
+	
+	"overlays" : [
+		{
+			"generator" : "folders",
+			"target" : "@{package:root}",
+			"folders" : [
+				"/",
+				"/env",
+				"/env/paths"
+			]
+		},
+		{
+			"generator" : "unarchiver",
+			"target" : "@{package:root}",
+			"resource" : "mosaic-node-boot.cpio.gz",
+			"format" : "cpio+gzip"
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/paths",
+			"links" : {
+				"21:mosaic-node" : "/opt/mosaic-node-@{definitions:package:version}/bin",
+				"22:mosaic-node-wui" : "/opt/mosaic-node-wui-@{definitions:package:version}/bin",
+				"31:mosaic-components-couchdb" : "/opt/mosaic-components-couchdb-@{definitions:package:version}/bin",
+				"31:mosaic-components-rabbitmq" : "/opt/mosaic-components-rabbitmq-@{definitions:package:version}/bin",
+				"31:mosaic-components-riak-kv" : "/opt/mosaic-components-riak-kv-@{definitions:package:version}/bin",
+				"31:mosaic-components-mysql" : "/opt/mosaic-components-mysql-@{definitions:package:version}/bin",
+				"31:mosaic-components-me2cp" : "/opt/mosaic-components-me2cp-@{definitions:package:version}/bin",
+				"31:mosaic-components-httpg" : "/opt/mosaic-components-httpg-@{definitions:package:version}/bin",
+				"31:mosaic-components-java-component-container" : "/opt/mosaic-components-java-component-container-@{definitions:package:version}/bin",
+				"31:mosaic-components-java-cloudlet-container" : "/opt/mosaic-components-java-cloudlet-container-@{definitions:package:version}/bin",
+				"31:mosaic-components-java-driver-amqp" : "/opt/mosaic-components-java-driver-amqp-@{definitions:package:version}/bin",
+				"31:mosaic-components-java-driver-riak" : "/opt/mosaic-components-java-driver-riak-@{definitions:package:version}/bin",
+				"51:bin" : "/bin",
+				"52:usr-bin" : "/usr/bin"
+			}
+		}
+	],
+	
+	"resources" : {
+		"mosaic-node-boot.cpio.gz" : {
+			"generator" : "fetcher",
+			"uri" : "@{definitions:resources:url:base}/mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz",
+			"cache" : "mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz"
+		}
+	},
+	
+	"definitions" : {
+		"package:name" : "mosaic-platform-java",
+		"package:version" : "0.7.0_dev",
+		"package:release" : "@{execution:timestamp}",
+		"resources:url:base" : "http://data.volution.ro/ciprian/public/mosaic/packages",
+		"resources:url:suffix" : "@{definitions:package:version}"
+	}
+}
