@@ -12,18 +12,18 @@
 	
 	"dependencies" : {
 		"requires" : [
-			"mosaic-node == @{definitions:package:version}",
-			"mosaic-node-wui == @{definitions:package:version}",
-			"mosaic-components-couchdb == @{definitions:package:version}",
-			"mosaic-components-rabbitmq == @{definitions:package:version}",
-			"mosaic-components-riak-kv == @{definitions:package:version}",
-			"mosaic-components-mysql == @{definitions:package:version}",
-			"mosaic-components-me2cp == @{definitions:package:version}",
-			"mosaic-components-httpg == @{definitions:package:version}",
-			"mosaic-components-java-component-container == @{definitions:package:version}",
-			"mosaic-components-java-cloudlet-container == @{definitions:package:version}",
-			"mosaic-components-java-driver-amqp == @{definitions:package:version}",
-			"mosaic-components-java-driver-riak == @{definitions:package:version}"
+			"mosaic-node == @{package:version}",
+			"mosaic-node-wui == @{package:version}",
+			"mosaic-components-couchdb == @{package:version}",
+			"mosaic-components-rabbitmq == @{package:version}",
+			"mosaic-components-riak-kv == @{package:version}",
+			"mosaic-components-mysql == @{package:version}",
+			"mosaic-components-me2cp == @{package:version}",
+			"mosaic-components-httpg == @{package:version}",
+			"mosaic-components-java-component-container == @{package:version}",
+			"mosaic-components-java-cloudlet-container == @{package:version}",
+			"mosaic-components-java-driver-amqp == @{package:version}",
+			"mosaic-components-java-driver-riak == @{package:version}"
 		]
 	},
 	
@@ -53,18 +53,18 @@
 			"generator" : "symlinks",
 			"target" : "@{package:root}/env/paths",
 			"links" : {
-				"21:mosaic-node" : "/opt/mosaic-node-@{definitions:package:version}/bin",
-				"22:mosaic-node-wui" : "/opt/mosaic-node-wui-@{definitions:package:version}/bin",
-				"31:mosaic-components-couchdb" : "/opt/mosaic-components-couchdb-@{definitions:package:version}/bin",
-				"31:mosaic-components-rabbitmq" : "/opt/mosaic-components-rabbitmq-@{definitions:package:version}/bin",
-				"31:mosaic-components-riak-kv" : "/opt/mosaic-components-riak-kv-@{definitions:package:version}/bin",
-				"31:mosaic-components-mysql" : "/opt/mosaic-components-mysql-@{definitions:package:version}/bin",
-				"31:mosaic-components-me2cp" : "/opt/mosaic-components-me2cp-@{definitions:package:version}/bin",
-				"31:mosaic-components-httpg" : "/opt/mosaic-components-httpg-@{definitions:package:version}/bin",
-				"31:mosaic-components-java-component-container" : "/opt/mosaic-components-java-component-container-@{definitions:package:version}/bin",
-				"31:mosaic-components-java-cloudlet-container" : "/opt/mosaic-components-java-cloudlet-container-@{definitions:package:version}/bin",
-				"31:mosaic-components-java-driver-amqp" : "/opt/mosaic-components-java-driver-amqp-@{definitions:package:version}/bin",
-				"31:mosaic-components-java-driver-riak" : "/opt/mosaic-components-java-driver-riak-@{definitions:package:version}/bin",
+				"21:mosaic-node" : "/opt/mosaic-node-@{package:version}/bin",
+				"22:mosaic-node-wui" : "/opt/mosaic-node-wui-@{package:version}/bin",
+				"31:mosaic-components-couchdb" : "/opt/mosaic-components-couchdb-@{package:version}/bin",
+				"31:mosaic-components-rabbitmq" : "/opt/mosaic-components-rabbitmq-@{package:version}/bin",
+				"31:mosaic-components-riak-kv" : "/opt/mosaic-components-riak-kv-@{package:version}/bin",
+				"31:mosaic-components-mysql" : "/opt/mosaic-components-mysql-@{package:version}/bin",
+				"31:mosaic-components-me2cp" : "/opt/mosaic-components-me2cp-@{package:version}/bin",
+				"31:mosaic-components-httpg" : "/opt/mosaic-components-httpg-@{package:version}/bin",
+				"31:mosaic-components-java-component-container" : "/opt/mosaic-components-java-component-container-@{package:version}/bin",
+				"31:mosaic-components-java-cloudlet-container" : "/opt/mosaic-components-java-cloudlet-container-@{package:version}/bin",
+				"31:mosaic-components-java-driver-amqp" : "/opt/mosaic-components-java-driver-amqp-@{package:version}/bin",
+				"31:mosaic-components-java-driver-riak" : "/opt/mosaic-components-java-driver-riak-@{package:version}/bin",
 				"51:bin" : "/bin",
 				"52:usr-bin" : "/usr/bin"
 			}
