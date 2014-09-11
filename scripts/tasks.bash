@@ -31,11 +31,8 @@ done < <(
 	| sort
 )
 
-cat <<EOS
-
-mosaic-platform-core@package : mosaic-node-boot@package
-mosaic-platform-java@package : mosaic-node-boot@package
-
-EOS
+if test -e "${_scripts}/tasks-extra.bash" ; then
+	( . "${_scripts}/tasks-extra.bash" ; )
+fi
 
 exit 0
