@@ -19,7 +19,8 @@
 			"mosaic-components-riak-kv == @{package:version}",
 			"mosaic-components-mysql == @{package:version}",
 			"mosaic-components-me2cp == @{package:version}",
-			"mosaic-components-httpg == @{package:version}"
+			"mosaic-components-httpg == @{package:version}",
+			"mosaic-object-store == @{package:version}"
 		]
 	},
 	
@@ -57,6 +58,7 @@
 				"31:mosaic-components-mysql" : "/opt/mosaic-components-mysql-@{package:version}/bin",
 				"31:mosaic-components-me2cp" : "/opt/mosaic-components-me2cp-@{package:version}/bin",
 				"31:mosaic-components-httpg" : "/opt/mosaic-components-httpg-@{package:version}/bin",
+				"31:mosaic-object-store" : "/opt/mosaic-object-store-@{package:version}/bin",
 				"51:bin" : "/bin",
 				"52:usr-bin" : "/usr/bin"
 			}
