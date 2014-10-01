@@ -37,7 +37,8 @@
 			"folders" : [
 				"/",
 				"/env",
-				"/env/paths"
+				"/env/paths",
+				"/env/variables"
 			]
 		},
 		{
@@ -45,6 +46,18 @@
 			"target" : "@{package:root}",
 			"resource" : "mosaic-node-boot.cpio.gz",
 			"format" : "cpio+gzip"
+		},
+		{
+			"generator" : "folders",
+			"target" : "@{package:root}",
+			"folders" : ["/lib/mosaic-platform-definitions"]
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/env/variables",
+			"links" : {
+				"@@a:mosaic_node_definitions" : "../../lib/mosaic-platform-definitions"
+			}
 		},
 		{
 			"generator" : "symlinks",
@@ -61,6 +74,20 @@
 				"31:mosaic-object-store" : "/opt/mosaic-object-store-@{package:version}/bin",
 				"51:bin" : "/bin",
 				"52:usr-bin" : "/usr/bin"
+			}
+		},
+		{
+			"generator" : "symlinks",
+			"target" : "@{package:root}/lib/mosaic-platform-definitions",
+			"links" : {
+				"mosaic-node" : "/opt/mosaic-node-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-components-couchdb" : "/opt/mosaic-components-couchdb-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-components-rabbitmq" : "/opt/mosaic-components-rabbitmq-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-components-riak-kv" : "/opt/mosaic-components-riak-kv-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-components-mysql" : "/opt/mosaic-components-mysql-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-components-me2cp" : "/opt/mosaic-components-me2cp-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-components-httpg" : "/opt/mosaic-components-httpg-@{package:version}/lib/mosaic-platform-definitions",
+				"mosaic-object-store" : "/opt/mosaic-object-store-@{package:version}/lib/mosaic-platform-definitions"
 			}
 		}
 	],
