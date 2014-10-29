@@ -110,16 +110,18 @@
 	"resources" : {
 		"mosaic-node-boot.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz",
-			"cache" : "mosaic-node-boot--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:mosaic:url:packages}/mosaic-node-boot/@{definitions:package:version}/package.cpio.gz",
+			"cache" : "mosaic-node-boot--@{definitions:package:version}.cpio.gz"
 		}
 	},
 	
 	"definitions" : {
+		
 		"package:name" : "mosaic-platform-core",
 		"package:version" : "0.7.0_dev",
 		"package:release" : "@{execution:timestamp}",
-		"resources:url:base" : "http://data.volution.ro/ciprian/public/mosaic/packages",
-		"resources:url:suffix" : "@{definitions:package:version}"
+		
+		"resources:mosaic:url:base" : "http://data.volution.ro/mosaic/public",
+		"resources:mosaic:url:packages" : "@{definitions:resources:mosaic:url:base}/packages"
 	}
 }

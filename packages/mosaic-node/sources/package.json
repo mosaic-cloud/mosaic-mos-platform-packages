@@ -37,7 +37,7 @@
 		{
 			"generator" : "unarchiver",
 			"target" : "@{package:root}",
-			"resource" : "mosaic-node.cpio.gz",
+			"resource" : "package.cpio.gz",
 			"format" : "cpio+gzip"
 		},
 		{
@@ -53,18 +53,21 @@
 	],
 	
 	"resources" : {
-		"mosaic-node.cpio.gz" : {
+		"package.cpio.gz" : {
 			"generator" : "fetcher",
-			"uri" : "@{definitions:resources:url:base}/mosaic-node--@{definitions:resources:url:suffix}.cpio.gz",
-			"cache" : "mosaic-node--@{definitions:resources:url:suffix}.cpio.gz"
+			"uri" : "@{definitions:resources:mosaic:url:package}/package.cpio.gz",
+			"cache" : "@{definitions:package:name}--@{definitions:package:version}.cpio.gz"
 		}
 	},
 	
 	"definitions" : {
+		
 		"package:name" : "mosaic-node",
 		"package:version" : "0.7.0_dev",
 		"package:release" : "@{execution:timestamp}",
-		"resources:url:base" : "http://data.volution.ro/ciprian/public/mosaic/packages",
-		"resources:url:suffix" : "@{definitions:package:version}"
+		
+		"resources:mosaic:url:base" : "http://data.volution.ro/mosaic/public",
+		"resources:mosaic:url:packages" : "@{definitions:resources:mosaic:url:base}/packages",
+		"resources:mosaic:url:package" : "@{definitions:resources:mosaic:url:packages}/@{definitions:package:name}/@{definitions:package:version}"
 	}
 }

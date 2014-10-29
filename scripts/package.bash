@@ -17,6 +17,7 @@ env "${_python_env[@]}" \
 			mpb_package_name="${_package_name}" \
 			mpb_package_version="${_package_version}" \
 			mpb_resources_cache="${_artifacts_cache}" \
+			mpb_debugging_enabled=true \
 		"${_python_bin}" "${_python_args[@]}" "${_scripts}/package.py" \
 				"${_packages}/${_package_name}/sources" \
 				"${_outputs}/${_package_name}.rpm"
