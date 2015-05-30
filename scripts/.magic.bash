@@ -19,12 +19,6 @@ while read _package_name ; do
 		echo "[--]" >&2
 	fi
 	
-	if test "${_operation:-compile}" == compile ; then
-		echo "[ii] compiling \`${_package_name}\`..." >&2
-		"${_scripts}/compile" "${_package_name}"
-		echo "[--]" >&2
-	fi
-	
 	if test "${_operation:-package}" == package ; then
 		echo "[ii] packaging \`${_package_name}\`..." >&2
 		"${_scripts}/package" "${_package_name}"
