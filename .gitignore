@@ -1,7 +1,9 @@
 
 .*
 !.gitignore
-!/scripts/*
+!/.repositories
+!/scripts/**
+!**/sources/.disabled
 
 *#
 *~
