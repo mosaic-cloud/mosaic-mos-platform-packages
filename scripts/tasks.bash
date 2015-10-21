@@ -16,7 +16,7 @@ ${_package_name}-rpm@requisites : \
 		pallur-packages@rpm \
 		pallur-environment
 
-${_package_name}-rpm@prepare : ${_package_name}-rpm@requisites ${_package_name}@package | ${_package_name}@publish
+${_package_name}-rpm@prepare : ${_package_name}-rpm@requisites ${_package_name}@package
 	!exec ${_scripts}/prepare ${_package_name}
 
 ${_package_name}-rpm@package : ${_package_name}-rpm@prepare
